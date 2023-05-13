@@ -1,0 +1,36 @@
+name: "[Dev] update tests"
+description: "This may update files in ./tests directory for pytest"
+
+title: "[Dev] "
+labels: ["development"]
+
+body:
+  - type: markdown
+    attributes:
+      value: Always welcome, ODLoader project is developed by a community of volunteers :)
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Checkbox
+      description: checkbox to submit this question
+      options:
+        - label: I agree to follow [code of conduct](https://github.com/lisphilar/odloader/blob/main/CODE_OF_CONDUCT.md) and to engage in discussion actively.
+          required: true
+
+  - type: textarea
+    id: script-to-test
+    attributes:
+      label: Script to test
+      description:  Please provide the script to test.
+      value: |
+        import odloader
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: comment
+    attributes:
+      label: Additional Context
+      placeholder: Additional Context, if required
