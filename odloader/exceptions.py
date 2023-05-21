@@ -11,7 +11,7 @@ class _BaseException(Exception):
     """
 
     def __init__(self, message: str, details: str | None = None) -> None:
-        self._message = str(message)
+        self._message = message
         self._details = "" if details is None else f" {details}."
 
     def __str__(self):
