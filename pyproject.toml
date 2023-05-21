@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "odloader"
+version = "0.1.0"
+description = "Open source Python library for open data analysis"
+authors = ["Lisphilar <lisphilar@outlook.jp>"]
+license = "Apache License 2.0"
+repository = "https://github.com/lisphilar/odloader"
+documentation = "https://github.com/lisphilar/odloader"
+readme = "README.md"
+keywords = ["data engineering", "data science"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9,<3.12"
+tomli = { version = "^2.0.1", python = "<3.11" }
+tomli-w = "^1.0.0"
+
+[tool.poetry.group.test.dependencies]
+deptry = "^0.11.0"
+autopep8 = "^2.0.2"
+flake8 = "^6.0.0"
+pyproject-flake8 = "^6.0.0.post1"
+pyright = "^1.1.308"
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+extend-ignore = ["E501"]
+
+[tool.coverage.run]
+branch = true
+disable_warnings = ["no-data-collected"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error", "ignore::pytest.PytestDeprecationWarning"]
+addopts = "--cov=odloader --cov-report=xml --cov-report=term-missing -vv --no-cov-on-fail -p no:cacheprovider --durations=1 --maxfail=1"
+
+[tool.deptry]
+# ignore_transitive = []
+# ignore_unused = []
+exclude = ['tests', '.venv']
+
+[tool.pyright]
+include = ["odloader"]
+reportOptionalMemberAccess = false
+reportUnboundVariable = false
+reportGeneralTypeIssues = false
